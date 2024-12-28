@@ -10,6 +10,7 @@ const { revertRepo } = require("./controllers/revert");
 
 //argv are arguments from system commands and give the list of-(command,description,parameters,method to call)
 yargs(hideBin(process.argv))
+  .command("start", "Start the server", {}, startServer)
   .command("init", "Initialize a new repository", {}, initRepo)
   .command(
     "add <file>",
@@ -48,7 +49,14 @@ yargs(hideBin(process.argv))
         type: "string",
       });
     },
-    revertRepo
+    (argv)=>{
+        revertRepo(argv.commitID); //passing commit ID as argument
+    }
   )
   .demandCommand(1, "You need atleast one command")
   .help().argv;
+
+  //as command is demanded this is required
+  function startServer(){
+      console.log("Server started");
+  }
