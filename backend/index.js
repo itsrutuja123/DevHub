@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const http = require('http');
 const { Server } = require('socket.io');
+const mainRouter = require("./routes/main.router");
 // Read the user input command and pass the control to respective controller file
 const yargs = require("yargs");
 const { hideBin } = require("yargs/helpers"); // Utility to extract space from commands
@@ -86,10 +87,9 @@ function startServer() {
     });
 
   app.use(cors({ origin: '*' })); // allow request from all sources
+  app.use("/",mainRouter);
 
-  app.get("/", (req, res) => {
-    res.send("Server is running");
-  });
+  
 
   let user = 'test'; // default user
   const httpServer = http.createServer(app);
