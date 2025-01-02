@@ -26,10 +26,10 @@ async function pushRepo(){
                 await s3.upload(params).promise(); //this can take time and hence promise
             }
         }
-        console.log("Successfully pushed files");
+        console.log("Yay! Successfully pushed files :)");
     }
     catch(err){
-        console.error("Errro pushing files",err);
+        console.error("Ohh No! Errro pushing files",err,":(");
     }
 }
 

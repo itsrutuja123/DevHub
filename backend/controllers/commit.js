@@ -28,9 +28,9 @@ async function commitRepo(message) {
       path.join(commitDir, "commit.json"),
       JSON.stringify({ message, date: new Date().toISOString()  })
     ); //stringfy converts JS to JSON date stored when the commit is created
-    console.log(`commit ${commitID} created with meassage: ${message}`);
+    console.log(`Yay! commit ${commitID} created with meassage: ${message}`);
   } catch (err) {
-    console.error("Error cmmiting Change:", err);
+    console.error("Oops! Error cmmiting Change:", err,":(");
   }
 }
 

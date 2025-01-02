@@ -18,10 +18,10 @@ async function revertRepo(){
         for(const file of files){
             await copyFile(path.join(commitDir,file),path.join(parentDir,file)); //copy from commitdir to parentdir
         }
-        console.log(`Revert successful to commitID:${commitID}`);
+        console.log(`Yay! Revert successful to commitID:${commitID}`);
     }
     catch(err){
-        console.log("Error reverting to commit:",err)
+        console.log("Ohh No! Error reverting to commit:",err,":(");
     }
 }
 

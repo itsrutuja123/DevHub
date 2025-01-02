@@ -29,8 +29,8 @@ async function getAllUsers(req, res) {
         const users = await usersCollection.find({}).toArray(); // Returns collection of array
         res.json(users);
     } catch (err) {
-        console.error("Error during fetching ", err.message);
-        res.status(500).send("Server error");
+        console.error("Ohh No! Error during fetching ", err.message,":(");
+        res.status(500).send("Oops! Server error");
     }
 }
 
@@ -44,7 +44,7 @@ const signup = async (req, res) => {
         // Check if user already exists
         const user = await usersCollection.findOne({ username });
         if (user) {
-            return res.status(400).json({ message: "User already exists" });
+            return res.status(400).json({ message: "Opps! User already exists!"});
         }
 
         // Encrypt user password
@@ -63,10 +63,10 @@ const signup = async (req, res) => {
         const result = await usersCollection.insertOne(newUser);
         const token = jwt.sign({ id: result.insertedId }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
 
-        res.send({ token });
+        res.send({ token, userId: result.insertedId  });
     } catch (err) {
-        console.error("Error during signup", err.message);
-        res.status(500).send("Server error");
+        console.error("Ohh No! Error during signup", err.message);
+        res.status(500).send("Oops! Server error");
     }
 }
 
@@ -78,19 +78,19 @@ async function login(req, res) {
         const usersCollection = db.collection("users");
         const user = await usersCollection.findOne({ email });
         if (!user) {
-            return res.status(404).json({ message: "Invalid credentials" });
+            return res.status(404).json({ message: "Sorry! Invalid credentials" });
         }
 
         const isMatch = await bcrypt.compare(password, user.password); // Compare passwords
         if (!isMatch) {
-            return res.status(404).json({ message: "Invalid credentials" });
+            return res.status(404).json({ message: "Sorry! Invalid credentials" });
         }
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
         res.json({ token, userId: user._id });
     } catch (err) {
-        console.error("Error during login:", err.message);
-        res.status(500).send("Server Error");
+        console.error("Ohh No! Error during login:", err.message,":(");
+        res.status(500).send("Oops! Server Error");
     }
 }
 
@@ -110,8 +110,8 @@ async function getUserProfile(req, res) {
         // Send the response as a success message after user is found
         res.send(user); // Return the "Profile fetched" message
     } catch (err) {
-        console.error("Error during login:", err.message);
-        res.status(500).send("Server Error");
+        console.error("Ohh No! Error during login:", err.message,":(");
+        res.status(500).send("Oops! Server Error");
     }
 }
 
@@ -138,8 +138,8 @@ async function updateUserProfile (req, res) {
         res.send(result.value);
     }
     catch(err){
-        console.error("Error during login:",err.message);
-        res.status(500).send("Server Error!");
+        console.error("Ohh No! Error during login:",err.message,":(");
+        res.status(500).send("Oops! Server Error!");
     }
     
 };
@@ -161,8 +161,8 @@ async function deleteUserProfile (req, res) {
 
     }
     catch(err){
-        console.error("Error during login:",err.message);
-        res.status(500).send("Server Error!");
+        console.error("Ohh No! Error during login:",err.message,":(");
+        res.status(500).send("Oosp! Server Error!");
     }
 
 };

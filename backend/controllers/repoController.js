@@ -25,12 +25,12 @@ async function createRepository(req,res){
         });
         const result = await newRepository.save();
         res.status(201).json({
-            message:"Repository Created!",
+            message:"Yay! You created a repository! :)",
             repositoryID:result._id,
         });
     }
     catch(err){
-        console.error("Error during repository creation!:",err.message);
+        console.error("Ohh No! Error creating a repository!:",err.message,":(");
         res.status(500).send("Server Error!");
     }
 };
@@ -41,7 +41,7 @@ async function getAllRepository(req,res){
         res.json(repositories);
     }
     catch(err){
-        console.error("Error during fetching repository!:",err.message);
+        console.error("Ohh No! Error during fetching repository!:",err.message,":(");
         res.status(500).send("Server Error!");
     }
 };
@@ -53,8 +53,8 @@ async function fetchRepositoryById(req,res){
         res.json(repository);
     }
     catch(err){
-        console.error("Error during fetching repository!:",err.message);
-        res.status(500).send("Server Error!");
+        console.error("Ohh No! Error during fetching repository!:",err.message,":(");
+        res.status(500).send("Oops! Server Error!");
     }
     
 };
@@ -65,8 +65,8 @@ async function fetchRepositoryByName(req,res){
         res.json(repository);
     }
     catch(err){
-        console.error("Error during fetching repository!:",err.message);
-        res.status(500).send("Server Error!");
+        console.error("Ohh No! Error during fetching repository!:",err.message,":(");
+        res.status(500).send("Oops! Server Error!");
     }
     
 };
@@ -82,7 +82,7 @@ async function fetchRepositoryForCurrentUser(req,res){
         res.json({message:"repositories found:",repositories});
     }
     catch(err){
-        console.error("Error during fetching user repositories!:",err.message);
+        console.error("Ohh No! Error during fetching user repositories!:",err.message,":(");
         res.status(500).send("Server Error!");
     }
 };
@@ -99,11 +99,11 @@ async function updateRepositoryById(req,res){
         repository.content.push(content);
         repository.description=description;
         const updatedRepository = await Repository.save();
-        res.json({message:"Repository updated!",repository:updatedRepository});
+        res.json({message:"Yes! Repository updated!",repository:updatedRepository});
     }
     catch(err){
-        console.error("Error during updating repositories!:",err.message);
-        res.status(500).send("Server Error!");
+        console.error("Ohh No! Error during updating repositories!:",err.message);
+        res.status(500).send("Oops! Server Error!");
 
     }
 };
@@ -118,13 +118,13 @@ async function toggleVisibilityById(req,res){
         repository.visibility = !repository.visibility;
         const updatedRepository = await Repository.save();
         res.json({
-            message:"Repository Visibility Updated!",
+            message:"Yes! Repository Visibility Updated! :)",
             repositoty: updatedRepository
         });
     }
     catch(err){
-        console.error("Error during changing visibility repositories!:",err.message);
-        res.status(500).send("Server Error!");
+        console.error("Ohh No! Error during changing visibility repositories!:",err.message,":(");
+        res.status(500).send("Oops! Server Error!");
 
     }
 };
@@ -136,11 +136,11 @@ async function deleteRepositoryById(req,res){
         if(!repository){
             return res.status(404).json({error:"User repository not found!"});
         }
-        res.json({message:"Repository Deeleted Successfully!"})
+        res.json({message:"Yes! Repository Deeleted Successfully!"})
     }
     catch(err){
-        console.error("Error deleting repository!:",err.message);
-        res.status(500).send("Server Error!");
+        console.error("Ohh No! Error deleting repository!:",err.message,":(");
+        res.status(500).send("Oops! Server Error!");
 
     }
 };

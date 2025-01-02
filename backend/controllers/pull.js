@@ -23,14 +23,14 @@ async function pullRepo(){
             //read file content 
             const fileContent =await s3.getObject(params).promise();
             await fs.writeFile(path.join(repoPath,key),fileContent.Body); //writing file
-            console.log("Successfully pulled files")
+            console.log("Yay! Successfully pulled files :)")
 
 
         }
 
     }
     catch(err){
-        console.error("Error pulling files:",err);
+        console.error("Ohh No! Error pulling files:",err,":(");
     }
 }
 

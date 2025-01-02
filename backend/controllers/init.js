@@ -9,10 +9,10 @@ async function initRepo(){
         await fs.mkdir(repoPath,{recursive:true});//recursive to create nested folder structure
         await fs.mkdir(commitsPath,{recursive:true});
         await fs.writeFile(path.join(repoPath,'config.json'),JSON.stringify({bucket: process.env.S3_BUCKET}));
-        console.log("Repository initialized");
+        console.log("Great! Repository is initialized :)");
     }
     catch(err){
-            console.error("Error initialising the repository",err)
+        console.error("Ohh No! Error initialising the repository",err,":(");
     }
 }
 
