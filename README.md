@@ -41,4 +41,4 @@ To get started with DevHB, follow the steps below:
 ### Clone the repository
 
 ```bash
-git clone
+git clone https://github.com/itsrutuja123/DevHub.git
