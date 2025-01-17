@@ -1,5 +1,4 @@
 # DevHub
-
 DevHB is a MERN stack-based platform designed for developers, offering functionalities similar to GitHub. It allows users to create, manage, and share repositories, collaborate with other developers, and maintain version control for their projects. DevHB provides a seamless and intuitive experience for building, managing, and sharing code.
 
 ## Features
