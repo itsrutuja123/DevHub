@@ -30,7 +30,7 @@ DevHB is a MERN stack-based platform designed for developers, offering functiona
 
 ## Installation
 
-To get started with DevHB, follow the steps below:
+To get started with DevHB, follow the steps below: 
 
 ### Prerequisites
 
