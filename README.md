@@ -1,5 +1,6 @@
 # DevHub - A Collaborative Development Platform (MERN Stack)
 
+
 ## 📌 Overview
 DevHub is a collaborative development platform built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows developers to share code, manage repositories, collaborate on projects, and streamline development workflows.
 
