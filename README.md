@@ -20,7 +20,7 @@ DevHub is a collaborative development platform built using the MERN (MongoDB, Ex
 - **Authentication**: JWT (JSON Web Tokens)
 - **File Storage**: (Optional) Firebase/Cloudinary for storing files
 
-## 📂 Project Structure
+## 📂 Project Structure:
 ```
 DevHub/
 │-- backend/
